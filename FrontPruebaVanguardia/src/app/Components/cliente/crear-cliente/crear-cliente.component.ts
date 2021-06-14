@@ -36,13 +36,11 @@ export class CrearClienteComponent implements OnInit {
    debugger;
     this._clienteService.create(this.cliente)
       .subscribe((res: any) => {
-        if(res && res.message.includes("Added")){
+     
           this.router.navigate(['cliente']).then(() => {
             window.location.reload();
           });
-        }else{
-         console.log("Error")
-        }
+       
       });
   
  
