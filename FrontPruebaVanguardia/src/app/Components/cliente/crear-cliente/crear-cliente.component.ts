@@ -26,7 +26,7 @@ export class CrearClienteComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['cliente']);
+    this.router.navigate(['']);
   }
 
   create() {  
@@ -37,7 +37,7 @@ export class CrearClienteComponent implements OnInit {
     this._clienteService.create(this.cliente)
       .subscribe((res: any) => {
      
-          this.router.navigate(['cliente']).then(() => {
+          this.router.navigate(['']).then(() => {
             window.location.reload();
           });
        
