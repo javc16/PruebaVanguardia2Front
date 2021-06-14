@@ -11,7 +11,6 @@ import { ClienteService } from 'src/app/Services/Cliente/cliente.service';
 export class ClienteComponent implements OnInit {
   clientes: Cliente[] = [];
   displayedColumns: string[] = ['id', 'codigo','nombre','fechaNacimiento','estadoCivil','action'];
-
   constructor(private _clienteService:ClienteService,private router: Router) {}
 
   ngOnInit(): void {
@@ -25,6 +24,15 @@ export class ClienteComponent implements OnInit {
     this.router.navigate(['crearcliente']);
   }
 
+  delete(cliente:Cliente) {  
+    this._clienteService.delete(cliente)
+      .subscribe((res: any) => {
+        this._clienteService.getData().subscribe((res: any[])=>{
+          this.clientes= res;          
+        })
+        
+      });     
+  }
 
 
 }

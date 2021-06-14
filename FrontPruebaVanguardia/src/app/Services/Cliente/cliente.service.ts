@@ -8,6 +8,7 @@ import { Cliente } from 'src/app/Models/Cliente';
 })
 export class ClienteService {
   private url:string;
+  idDelete:number=1;
 
   constructor(private http: HttpClient) 
 
@@ -24,4 +25,12 @@ export class ClienteService {
   create(cliente: Cliente) {
     return this.http.post(this.url, cliente);
   }
+
+  delete(cliente: Cliente){
+    debugger;    
+    return this.http.put(this.url, cliente);
+  }
+  
+
+  
 }
