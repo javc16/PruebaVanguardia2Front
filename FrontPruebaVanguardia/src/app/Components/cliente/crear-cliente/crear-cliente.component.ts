@@ -10,16 +10,17 @@ import { ClienteService } from 'src/app/Services/Cliente/cliente.service';
 })
 
 export class CrearClienteComponent implements OnInit {
-  nombre: string='';
-  codigo!: number
-  fechaNacimiento!:Date
-  estadoCivil!:string
-  cliente!:Cliente
+   nombre!: string
+   codigo!: number
+   fechaNacimiento!:Date
+   estadoCivil!:string
+   private cliente!:Cliente
+
 
   constructor
   (private _clienteService:ClienteService,
-    private router: Router
-   ) { }
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -29,10 +30,11 @@ export class CrearClienteComponent implements OnInit {
   }
 
   create() {  
-   
-       
-   
-    this._clienteService.create(new Cliente(1,this.codigo,this.nombre,this.fechaNacimiento,this.estadoCivil,1))
+    debugger;
+    this.cliente = {Id:1,Codigo:this.codigo,Nombre:this.nombre,FechaNacimiento:this.fechaNacimiento,EstadoCivil:this.estadoCivil,Estado:1};    
+       console.log(this.cliente)
+   debugger;
+    this._clienteService.create(this.cliente)
       .subscribe((res: any) => {
         if(res && res.message.includes("Added")){
           this.router.navigate(['cliente']).then(() => {
